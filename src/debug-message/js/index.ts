@@ -46,18 +46,11 @@ export class JSDebugMessage extends DebugMessage {
       lineOfSelectedVar,
       tabSize
     );
-    var langStringConcat = ", "; 
-      switch (languageChoice) {
-        case "js":
-          langStringConcat = ", "
-          break; 
-        case "c-sharp": 
-          langStringConcat = " + "
-          break; 
-        default:
-          langStringConcat = ", "
-          break; 
-      }; 
+    const langStringConcat = (
+      languageChoice === "c-sharp" ? " + " :
+      languageChoice === "js" ? ", " :
+      ", "
+    );
     const semicolon: string = addSemicolonInTheEnd ? ";" : "";
     const fileName = document.fileName.includes("/")
       ? document.fileName.split("/")[document.fileName.split("/").length - 1]
