@@ -48,6 +48,9 @@ Properties:
 
 - turboConsoleLog.quote (enum): Double quotes (""), single quotes ('') or backtick(``).
 
+- turboConsoleLog.languageChoice (enum): "js" for ", ", "c-sharp" for " + ". Other languages to be added. 
+
+
 A wrapped log message :
 
 ![alt text](https://image.ibb.co/h9yfYU/wrap_log_message.gif "Wrapping The log message")
