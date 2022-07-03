@@ -1,6 +1,6 @@
 {
-  "name": "turbo-console-log",
-  "displayName": "Turbo Console Log",
+  "name": "turbo-console-log-lang",
+  "displayName": "Turbo Console Log - Language Support",
   "description": "Automating the process of writing meaningful log messages.",
   "version": "2.3.2",
   "publisher": "ChakrounAnas",
@@ -84,7 +84,16 @@
           "type": "string",
           "default": "log",
           "description": "Specify a log function (when specified logType will be ignored)"
-        }
+        },
+        "turboConsoleLog.languageChoice": {
+          "type": "string",
+          "enum": [
+            "js",
+            "c-sharp"
+          ],
+          "default": "js",
+          "description": "Select the language basis on which the variable is concatenated into the string in the log message"
+        } 
       }
     },
     "commands": [
@@ -130,7 +139,7 @@
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
-    "compile": "tsc -p ./ && mkdir -p out/test/files/js && cp -r src/test/files/js out/test/files",
+    "compile": "tsc -p ./",
     "lint": "eslint src --ext ts",
     "watch": "tsc -watch -p ./",
     "pretest": "yarn run compile",
