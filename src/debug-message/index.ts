@@ -23,7 +23,8 @@ export abstract class DebugMessage {
     includeFileNameAndLineNum: boolean,
     tabSize: number,
     logType: string,
-    logFunction: string
+    logFunction: string,
+    languageChoice: string
   ): void;
   abstract line(
     document: TextDocument,

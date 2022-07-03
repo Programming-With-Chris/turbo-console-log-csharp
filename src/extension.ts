@@ -47,7 +47,8 @@ export function activate(context: vscode.ExtensionContext) {
             delimiterInsideMessage,
             includeFileNameAndLineNum,
             logType,
-            logFunction
+            logFunction,
+            languageChoice
           } = properties;
           await editor.edit((editBuilder) => {
             jsDebugMessage.msg(
@@ -65,7 +66,8 @@ export function activate(context: vscode.ExtensionContext) {
               includeFileNameAndLineNum,
               tabSize,
               logType,
-              logFunction
+              logFunction,
+              languageChoice
             );
           });
         }
@@ -187,6 +189,7 @@ function getExtensionProperties(
     workspaceConfig.includeFileNameAndLineNum || false;
   const logType = workspaceConfig.logType || "log";
   const logFunction = workspaceConfig.logFunction || 'log';
+  const languageChoice = workspaceConfig.languageChoice || 'js'; 
   const extensionProperties: ExtensionProperties = {
     wrapLogMessage,
     logMessagePrefix,
@@ -197,7 +200,8 @@ function getExtensionProperties(
     delimiterInsideMessage,
     includeFileNameAndLineNum,
     logType,
-    logFunction
+    logFunction,
+    languageChoice
   };
   return extensionProperties;
 }

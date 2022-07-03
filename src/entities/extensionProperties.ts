@@ -9,6 +9,7 @@ export type ExtensionProperties = {
   quote: string;
   logType: enumLogType;
   logFunction: string;
+  languageChoice: string;
 };
 
 enum enumLogType {

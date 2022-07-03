@@ -23,7 +23,8 @@ export class JSDebugMessage extends DebugMessage {
     includeFileNameAndLineNum: boolean,
     tabSize: number,
     logType: string,
-    logFunction: string
+    logFunction: string,
+    languageChoice: string
   ): void {
     const classThatEncloseTheVar: string = this.enclosingBlockName(
       document,
@@ -45,6 +46,18 @@ export class JSDebugMessage extends DebugMessage {
       lineOfSelectedVar,
       tabSize
     );
+    var langStringConcat = ", "; 
+      switch (languageChoice) {
+        case "js":
+          langStringConcat = ", "
+          break; 
+        case "c-sharp": 
+          langStringConcat = " + "
+          break; 
+        default:
+          langStringConcat = ", "
+          break; 
+      }; 
     const semicolon: string = addSemicolonInTheEnd ? ";" : "";
     const fileName = document.fileName.includes("/")
       ? document.fileName.split("/")[document.fileName.split("/").length - 1]
@@ -80,7 +93,7 @@ export class JSDebugMessage extends DebugMessage {
           ? `${funcThatEncloseTheVar} ${delemiterInsideMessage} `
           : ""
         : ""
-    }${selectedVar}${quote} + ${selectedVar})${semicolon}`;
+    }${selectedVar}${quote}${langStringConcat}${selectedVar})${semicolon}`;
     if (wrapLogMessage) {
       // 16 represents the length of console.log("");
       const wrappingMsg: string = `console.${logType}(${quote}${logMessagePrefix} ${"-".repeat(
